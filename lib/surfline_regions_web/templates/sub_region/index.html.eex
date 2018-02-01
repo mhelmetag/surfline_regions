@@ -1,0 +1,27 @@
+<h2>Sub Regions for <%= @region.name %></h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Sub Region Name</th>
+      <th>Surfline ID</th>
+    </tr>
+  </thead>
+  <tbody>
+  <%= for sub_region <- @sub_regions do %>
+    <tr>
+      <td class="text-right">
+        <%= sub_region.name %>
+      </td>
+      <td class="text-right">
+        <%= sub_region.surfline_id %>
+      </td>
+      <td class="text-right">
+        <span><%= link "Show", to: area_region_sub_region_path(@conn, :show, @area.id, @region.id, sub_region.id) %></span>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<span><%= link "Back", to: area_region_path(@conn, :index, @area.id) %></span>

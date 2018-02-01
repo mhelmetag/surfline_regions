@@ -1,0 +1,8 @@
+<h2>Sub Region</h2>
+
+<ul>
+  <li><span>Name:</span> <%= @sub_region.name %></li>
+  <li><span>Surfline ID:</span> <%= @sub_region.surfline_id %></li>
+</ul>
+
+<span><%= link "Back", to: area_region_sub_region_path(@conn, :index, @area.id, @region.id) %></span>
