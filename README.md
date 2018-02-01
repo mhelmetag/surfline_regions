@@ -1,5 +1,7 @@
 # Surfline Regions
 
+Search Areas, Regions and Sub Regions for Surfline Forecasts.
+
 This app creates a searchable UI and API for Areas, Regions and Sub Regions managed by Surfline and their internal IDs (used by the forecast API).
 
 # Setup
