@@ -5,11 +5,7 @@ defmodule SurflineRegionsWeb.SubRegionController do
   alias SurflineRegions.Regions
   alias SurflineRegions.SubRegions
 
-  require IEx
-
   def index(conn, %{"area_id" => area_id, "region_id" => region_id}) do
-    IEx.pry()
-
     area = Areas.get_area!(area_id)
     region = Regions.get_region!(region_id)
     sub_regions = SubRegions.list_sub_regions_by_region(region.id)
@@ -24,8 +20,6 @@ defmodule SurflineRegionsWeb.SubRegionController do
   end
 
   def show(conn, %{"area_id" => area_id, "region_id" => region_id, "id" => id}) do
-    IEx.pry()
-
     area = Areas.get_area!(area_id)
     region = Regions.get_region!(region_id)
     sub_region = SubRegions.get_sub_region!(id)
