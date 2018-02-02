@@ -14,7 +14,6 @@ defmodule SurflineRegionsWeb.Router do
   end
 
   scope "/", SurflineRegionsWeb do
-    # Use the default browser stack
     pipe_through(:browser)
 
     get("/", AreaController, :index)
@@ -22,6 +21,16 @@ defmodule SurflineRegionsWeb.Router do
     resources "/areas", AreaController, only: [:index, :show] do
       resources "/regions", RegionController, only: [:index, :show] do
         resources("/sub_regions", SubRegionController, only: [:index, :show])
+      end
+    end
+  end
+
+  scope "/api", SurflineRegionsWeb, as: :api do
+    pipe_through(:api)
+
+    resources "/areas", Api.AreaController, only: [:index, :show] do
+      resources "/regions", Api.RegionController, only: [:index, :show] do
+        resources("/sub_regions", Api.SubRegionController, only: [:index, :show])
       end
     end
   end
