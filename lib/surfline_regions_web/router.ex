@@ -30,7 +30,11 @@ defmodule SurflineRegionsWeb.Router do
 
     resources "/areas", Api.AreaController, only: [:index, :show] do
       resources "/regions", Api.RegionController, only: [:index, :show] do
-        resources("/sub_regions", Api.SubRegionController, only: [:index, :show])
+        resources(
+          "/sub_regions",
+          Api.SubRegionController,
+          only: [:index, :show]
+        )
       end
     end
   end
