@@ -26,11 +26,11 @@ defmodule SurflineRegions.SubRegions do
 
   ## Examples
 
-      iex> list_regions_by_area(1)
+      iex> list_sub_regions_by_region(%Region{})
       [%SubRegion{}, ...]
   """
-  def list_sub_regions_by_region(region_id) do
-    query = from(sr in SubRegion, where: sr.region_id == ^region_id)
+  def list_sub_regions_by_region(region) do
+    query = from(sr in SubRegion, where: sr.region_id == ^region.id)
 
     Repo.all(query)
   end

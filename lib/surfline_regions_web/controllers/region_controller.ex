@@ -6,7 +6,7 @@ defmodule SurflineRegionsWeb.RegionController do
 
   def index(conn, %{"area_id" => area_id}) do
     area = Areas.get_area!(area_id)
-    regions = Regions.list_regions_by_area(area.id)
+    regions = Regions.list_regions_by_area(area)
     render(conn, "index.html", area: area, regions: regions)
   end
 
