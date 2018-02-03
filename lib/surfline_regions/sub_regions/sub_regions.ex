@@ -48,7 +48,8 @@ defmodule SurflineRegions.SubRegions do
   """
   def get_sub_region!(id), do: Repo.get!(SubRegion, id)
 
-  def get_sub_region_surfline!(surfline_id), do: Repo.get_by!(SubRegion, surfline_id: surfline_id)
+  def get_sub_region_surfline!(surfline_id),
+    do: Repo.get_by!(SubRegion, surfline_id: surfline_id)
 
   @doc """
   Creates a Sub Region.

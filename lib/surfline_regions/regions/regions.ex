@@ -48,7 +48,8 @@ defmodule SurflineRegions.Regions do
   """
   def get_region!(id), do: Repo.get!(Region, id)
 
-  def get_region_surfline!(surfline_id), do: Repo.get_by!(Region, surfline_id: surfline_id)
+  def get_region_surfline!(surfline_id),
+    do: Repo.get_by!(Region, surfline_id: surfline_id)
 
   @doc """
   Creates a Region.

@@ -11,6 +11,6 @@ defmodule SurflineRegionsWeb.Api.AreaView do
   end
 
   def render("area.json", %{area: area}) do
-    %{id: area.id, surfline_id: area.surfline_id, name: area.name}
+    %{surfline_id: area.surfline_id, name: area.name}
   end
 end
