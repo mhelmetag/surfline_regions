@@ -3,18 +3,18 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Area Name</th>
-      <th>Surfline ID</th>
+      <th>ID</th>
+      <th>Name</th>
     </tr>
   </thead>
   <tbody>
   <%= for area <- @areas do %>
     <tr>
       <td class="text-right">
-        <%= area.name %>
+        <%= area.surfline_id %>
       </td>
       <td class="text-right">
-        <%= area.surfline_id %>
+        <%= area.name %>
       </td>
       <td class="text-right">
         <span><%= link "Show", to: area_path(@conn, :show, area.surfline_id) %></span>

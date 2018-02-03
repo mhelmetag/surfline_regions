@@ -3,18 +3,18 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Region Name</th>
-      <th>Surfline ID</th>
+      <th>ID</th>
+      <th>Name</th>
     </tr>
   </thead>
   <tbody>
   <%= for region <- @regions do %>
     <tr>
       <td class="text-right">
-        <%= region.name %>
+        <%= region.surfline_id %>
       </td>
       <td class="text-right">
-        <%= region.surfline_id %>
+        <%= region.name %>
       </td>
       <td class="text-right">
         <span>

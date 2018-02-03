@@ -1,8 +1,8 @@
 <h2>Sub Region</h2>
 
 <ul>
+  <li><span>ID:</span> <%= @sub_region.surfline_id %></li>
   <li><span>Name:</span> <%= @sub_region.name %></li>
-  <li><span>Surfline ID:</span> <%= @sub_region.surfline_id %></li>
 </ul>
 
 <span>

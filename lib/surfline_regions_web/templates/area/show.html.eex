@@ -1,8 +1,8 @@
 <h2>Area</h2>
 
 <ul>
+  <li><span>ID:</span> <%= @area.surfline_id %></li>
   <li><span>Name:</span> <%= @area.name %></li>
-  <li><span>Surfline ID:</span> <%= @area.surfline_id %></li>
 </ul>
 
 <span><%= link "Regions", to: area_region_path(@conn, :index, @area.surfline_id) %></span>
