@@ -10,8 +10,8 @@ defmodule SurflineRegionsWeb.Api.AreaController do
     render(conn, "index.json", area: area)
   end
 
-  def show(conn, %{"id" => id}) do
-    area = Areas.get_area!(id)
+  def show(conn, %{"surfline_id" => surfline_id}) do
+    area = Areas.get_area_surfline!(surfline_id)
     render(conn, "show.json", area: area)
   end
 end

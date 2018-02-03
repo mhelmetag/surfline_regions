@@ -6,14 +6,14 @@ defmodule SurflineRegionsWeb.Api.RegionController do
 
   action_fallback(SurflineRegionsWeb.Api.FallbackController)
 
-  def index(conn, %{"area_id" => area_id}) do
-    area = Areas.get_area!(area_id)
+  def index(conn, %{"area_surfline_id" => area_surfline_id}) do
+    area = Areas.get_area_surfline!(area_surfline_id)
     regions = Regions.list_regions_by_area(area)
     render(conn, "index.json", regions: regions)
   end
 
-  def show(conn, %{"area_id" => _area_id, "id" => id}) do
-    region = Regions.get_region!(id)
+  def show(conn, %{"surfline_id" => surfline_id}) do
+    region = Regions.get_region_surfline!(surfline_id)
     render(conn, "show.json", region: region)
   end
 end
