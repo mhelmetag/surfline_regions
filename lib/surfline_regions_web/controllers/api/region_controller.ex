@@ -4,7 +4,7 @@ defmodule SurflineRegionsWeb.Api.RegionController do
   alias SurflineRegions.Areas
   alias SurflineRegions.Regions
 
-  action_fallback(SurflineRegionsWeb.FallbackController)
+  action_fallback(SurflineRegionsWeb.Api.FallbackController)
 
   def index(conn, %{"area_id" => area_id}) do
     area = Areas.get_area!(area_id)
