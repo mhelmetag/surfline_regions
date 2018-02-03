@@ -17,11 +17,19 @@
         <%= sub_region.surfline_id %>
       </td>
       <td class="text-right">
-        <span><%= link "Show", to: area_region_sub_region_path(@conn, :show, @area.id, @region.id, sub_region.id) %></span>
+        <span>
+          <%= link "Show", to: area_region_sub_region_path(
+            @conn,
+            :show,
+            @area.surfline_id,
+            @region.surfline_id,
+            sub_region.surfline_id
+          ) %>
+        </span>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<span><%= link "Back", to: area_region_path(@conn, :index, @area.id) %></span>
+<span><%= link "Back", to: area_region_path(@conn, :index, @area.surfline_id) %></span>

@@ -5,5 +5,12 @@
   <li><span>Surfline ID:</span> <%= @region.surfline_id %></li>
 </ul>
 
-<span><%= link "Sub Regions", to: area_region_sub_region_path(@conn, :index, @area.id, @region.id) %></span>
-<span><%= link "Back", to: area_region_path(@conn, :index, @area.id) %></span>
+<span>
+  <%= link "Sub Regions", to: area_region_sub_region_path(
+    @conn,
+    :index,
+    @area.surfline_id,
+    @region.surfline_id
+  ) %>
+</span>
+<span><%= link "Back", to: area_region_path(@conn, :index, @area.surfline_id) %></span>

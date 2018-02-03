@@ -18,9 +18,18 @@ defmodule SurflineRegionsWeb.Router do
 
     get("/", AreaController, :index)
 
-    resources "/areas", AreaController, only: [:index, :show] do
-      resources "/regions", RegionController, only: [:index, :show] do
-        resources("/sub_regions", SubRegionController, only: [:index, :show])
+    resources "/areas", AreaController,
+      only: [:index, :show],
+      param: "surfline_id" do
+      resources "/regions", RegionController,
+        only: [:index, :show],
+        param: "surfline_id" do
+        resources(
+          "/subregions",
+          SubRegionController,
+          only: [:index, :show],
+          param: "surfline_id"
+        )
       end
     end
   end
@@ -28,12 +37,17 @@ defmodule SurflineRegionsWeb.Router do
   scope "/api", SurflineRegionsWeb, as: :api do
     pipe_through(:api)
 
-    resources "/areas", Api.AreaController, only: [:index, :show] do
-      resources "/regions", Api.RegionController, only: [:index, :show] do
+    resources "/areas", Api.AreaController,
+      only: [:index, :show],
+      param: "surfline_id" do
+      resources "/regions", Api.RegionController,
+        only: [:index, :show],
+        param: "surfline_id" do
         resources(
-          "/sub_regions",
+          "/subregions",
           Api.SubRegionController,
-          only: [:index, :show]
+          only: [:index, :show],
+          param: "surfline_id"
         )
       end
     end

@@ -5,9 +5,12 @@ defmodule SurflineRegionsWeb.SubRegionController do
   alias SurflineRegions.Regions
   alias SurflineRegions.SubRegions
 
-  def index(conn, %{"area_id" => area_id, "region_id" => region_id}) do
-    area = Areas.get_area!(area_id)
-    region = Regions.get_region!(region_id)
+  def index(conn, %{
+        "area_surfline_id" => area_surfline_id,
+        "region_surfline_id" => region_surfline_id
+      }) do
+    area = Areas.get_area_surfline!(area_surfline_id)
+    region = Regions.get_region_surfline!(region_surfline_id)
     sub_regions = SubRegions.list_sub_regions_by_region(region)
 
     render(
@@ -19,10 +22,14 @@ defmodule SurflineRegionsWeb.SubRegionController do
     )
   end
 
-  def show(conn, %{"area_id" => area_id, "region_id" => region_id, "id" => id}) do
-    area = Areas.get_area!(area_id)
-    region = Regions.get_region!(region_id)
-    sub_region = SubRegions.get_sub_region!(id)
+  def show(conn, %{
+        "area_surfline_id" => area_surfline_id,
+        "region_surfline_id" => region_surfline_id,
+        "surfline_id" => surfline_id
+      }) do
+    area = Areas.get_area_surfline!(area_surfline_id)
+    region = Regions.get_region_surfline!(region_surfline_id)
+    sub_region = SubRegions.get_sub_region_surfline!(surfline_id)
 
     render(
       conn,
