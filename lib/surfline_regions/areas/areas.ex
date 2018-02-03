@@ -37,6 +37,8 @@ defmodule SurflineRegions.Areas do
   """
   def get_area!(id), do: Repo.get!(Area, id)
 
+  def get_area_surfline!(surfline_id), do: Repo.get_by!(Area, surfline_id: surfline_id)
+
   @doc """
   Creates an Area.
 
