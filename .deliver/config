@@ -1,16 +1,15 @@
 APP="surfline_regions"
 
 RELEASE_DIR="/tmp/edeliver/$APP/builds/_build/prod/rel/$APP"
-
 GIT_CLEAN_PATHS="_build rel priv/static"
 
 BUILD_HOST="build.surfliner.maxworld.tech"
 BUILD_USER="ubuntu"
-BUILD_AT="/tmp/edeliver/myapp/builds"
+BUILD_AT="/tmp/edeliver/surfliner/builds"
 
 PRODUCTION_HOSTS="surfliner.maxworld.tech"
 PRODUCTION_USER="ubuntu"
-DELIVER_TO="/opt/surfliner"
+DELIVER_TO="/home/deploy"
 
 pre_erlang_get_and_update_deps() {
   local _prod_secret_path="/home/ubuntu/prod.secret.exs"
@@ -27,18 +26,25 @@ pre_erlang_clean_compile() {
     # fail if any command fails (recommended)
     set -e
 
-    # enter the build directory on the build host (required)
+    # cd to the build directory on the build host (required)
     cd '$BUILD_AT'
 
-    mkdir -p priv/static # required by the phoenix.digest task
+    # required by the phoenix.digest task
+    mkdir -p priv/static
+
+    # cd to assets
+    cd assets
 
     # installing npm dependencies
     npm install
 
     # building brunch
-    brunch build --production
+    ./node_modules/brunch/bin/brunch build --production
+
+    # cd back to build dir
+    cd '$BUILD_AT'
 
     # prepare assets
-    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phoenix.digest $SILENCE
+    APP='$APP' MIX_ENV='$TARGET_MIX_ENV' $MIX_CMD phx.digest $SILENCE
   "
 }
