@@ -20,7 +20,7 @@ defmodule SurflineRegions.Mixfile do
   def application do
     [
       mod: {SurflineRegions.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -43,7 +43,9 @@ defmodule SurflineRegions.Mixfile do
       {:cowboy, "~> 1.0"},
       {:surfline_regions_fetcher,
        github: "mhelmetag/surfline_regions_fetcher", tag: "0.1.0"},
-      {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false}
+      {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false},
+      {:edeliver, "~> 1.4.5"},
+      {:distillery, ">= 0.8.0", warn_missing: false}
     ]
   end
 
