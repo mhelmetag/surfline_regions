@@ -5,7 +5,7 @@ GIT_CLEAN_PATHS="_build rel priv/static"
 
 BUILD_HOST="build.surfliner.maxworld.tech"
 BUILD_USER="ubuntu"
-BUILD_AT="/tmp/edeliver/surfliner/builds"
+BUILD_AT="/tmp/edeliver/surfline_regions/builds"
 
 PRODUCTION_HOSTS="surfliner.maxworld.tech"
 PRODUCTION_USER="ubuntu"
