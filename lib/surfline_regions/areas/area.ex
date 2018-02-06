@@ -24,6 +24,7 @@ defmodule SurflineRegions.Areas.Area do
     area
     |> cast(attrs, [:name, :surfline_id])
     |> validate_required([:name, :surfline_id])
-    |> unique_constraint([:name, :surfline_id])
+    |> unique_constraint(:name)
+    |> unique_constraint(:surfline_id)
   end
 end

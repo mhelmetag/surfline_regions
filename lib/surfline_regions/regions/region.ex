@@ -24,9 +24,9 @@ defmodule SurflineRegions.Regions.Region do
   @doc false
   def changeset(%Region{} = region, attrs) do
     region
-    |> cast(attrs, [:name, :surfline_id])
+    |> cast(attrs, [:name, :surfline_id, :area_id])
     |> assoc_constraint(:area)
     |> validate_required([:name, :surfline_id])
-    |> unique_constraint([:name, :surfline_id])
+    |> unique_constraint(:surfline_id)
   end
 end
