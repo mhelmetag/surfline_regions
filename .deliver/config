@@ -9,7 +9,7 @@ BUILD_AT="/tmp/edeliver/surfline_regions/builds"
 
 PRODUCTION_HOSTS="surfliner.maxworld.tech"
 PRODUCTION_USER="ubuntu"
-DELIVER_TO="/home/deploy"
+DELIVER_TO="/home/ubuntu"
 
 pre_erlang_get_and_update_deps() {
   local _prod_secret_path="/home/ubuntu/prod.secret.exs"
