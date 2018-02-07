@@ -10,7 +10,7 @@ defmodule SurflineRegions.Repo.Migrations.CreateRegions do
       timestamps()
     end
 
-    create unique_index(:regions, [:name])
+    create unique_index(:regions, [:surfline_id])
     create index(:regions, [:area_id])
   end
 end
