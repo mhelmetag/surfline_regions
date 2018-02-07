@@ -38,16 +38,33 @@ defmodule SurflineRegions.Regions do
   @doc """
   Gets a single Region.
 
-  Raises if the Region does not exist.
+  Raises `Ecto.NoResultsError` if the Region does not exist.
 
   ## Examples
 
       iex> get_region!(123)
       %Region{}
 
+      iex> get_region!(456)
+      ** (Ecto.NoResultsError)
+
   """
   def get_region!(id), do: Repo.get!(Region, id)
 
+  @doc """
+  Gets a single Region by Surfline ID.
+
+  Raises `Ecto.NoResultsError` if the Region does not exist.
+
+  ## Examples
+
+      iex> get_region_surfline!("123")
+      %Region{}
+
+      iex> get_region_surfline!("456")
+      ** (Ecto.NoResultsError)
+
+  """
   def get_region_surfline!(surfline_id),
     do: Repo.get_by!(Region, surfline_id: surfline_id)
 
@@ -85,5 +102,24 @@ defmodule SurflineRegions.Regions do
     region
     |> Region.changeset(attrs)
     |> Repo.update()
+  end
+
+  @doc """
+  Finds or creates a Region by Surfline ID.
+
+  ## Examples
+
+      iex> find_or_create_region(%{name: "Nowhere", "1"})
+      {:ok, %Region{}}
+
+  """
+  def find_or_create_region(attrs \\ %{}) do
+    query = (from r in Region, where: r.surfline_id == ^attrs.surfline_id)
+    region = Repo.one(query)
+
+    case region do
+      nil -> create_region(attrs)
+      _ -> {:ok, region}
+    end
   end
 end

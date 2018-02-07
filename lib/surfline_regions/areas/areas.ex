@@ -37,6 +37,20 @@ defmodule SurflineRegions.Areas do
   """
   def get_area!(id), do: Repo.get!(Area, id)
 
+  @doc """
+  Gets a single Area by Surfline ID.
+
+  Raises `Ecto.NoResultsError` if the Area does not exist.
+
+  ## Examples
+
+      iex> get_area_surfline!("123")
+      %Area{}
+
+      iex> get_area_surfline!("456")
+      ** (Ecto.NoResultsError)
+
+  """
   def get_area_surfline!(surfline_id),
     do: Repo.get_by!(Area, surfline_id: surfline_id)
 
@@ -74,5 +88,24 @@ defmodule SurflineRegions.Areas do
     area
     |> Area.changeset(attrs)
     |> Repo.update()
+  end
+
+  @doc """
+  Finds or creates an Area by Surfline ID.
+
+  ## Examples
+
+      iex> find_or_create_area(%{name: "Nowhere", "1"})
+      {:ok, %Area{}}
+
+  """
+  def find_or_create_area(attrs \\ %{}) do
+    query = (from a in Area, where: a.surfline_id == ^attrs.surfline_id)
+    area = Repo.one(query)
+
+    case area do
+      nil -> create_area(attrs)
+      _ -> {:ok, area}
+    end
   end
 end

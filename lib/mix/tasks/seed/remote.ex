@@ -28,7 +28,7 @@ defmodule Mix.Tasks.Seed.Remote do
 
   def create_areas(maps) do
     Enum.map(maps, fn map ->
-      {:ok, area} = Areas.create_area(%{name: map.name, surfline_id: map.surfline_id})
+      {:ok, area} = Areas.find_or_create_area(%{name: map.name, surfline_id: map.surfline_id})
       region_maps = get_region_maps(area.surfline_id)
 
       region_maps
@@ -43,7 +43,7 @@ defmodule Mix.Tasks.Seed.Remote do
   def create_regions(maps, area) do
     Enum.map(maps, fn map ->
       {:ok, region} =
-        Regions.create_region(%{name: map.name, surfline_id: map.surfline_id, area_id: area.id})
+        Regions.find_or_create_region(%{name: map.name, surfline_id: map.surfline_id, area_id: area.id})
 
       sub_region_maps = get_sub_region_maps(region.surfline_id)
 
@@ -58,7 +58,7 @@ defmodule Mix.Tasks.Seed.Remote do
 
   def create_sub_regions(maps, region) do
     Enum.map(maps, fn map ->
-      SubRegions.create_sub_region(%{name: map.name, surfline_id: map.surfline_id, region_id: region.id})
+      SubRegions.find_or_create_sub_region(%{name: map.name, surfline_id: map.surfline_id, region_id: region.id})
     end)
   end
 end
