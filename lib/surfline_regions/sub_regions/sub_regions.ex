@@ -118,7 +118,7 @@ defmodule SurflineRegions.SubRegions do
     sub_region = Repo.one(query)
 
     case sub_region do
-      [] -> create_sub_region(attrs)
+      nil -> create_sub_region(attrs)
       _ -> {:ok, sub_region}
     end
   end
