@@ -1,1 +1,58 @@
 /* This file is for your main application css. */
+
+body {
+	background: #445;
+	color: #FFF;
+}
+
+main {
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	font-family: sans-serif;
+	font-size: 2rem;
+	display: inline-block;
+	padding: 1rem;
+	font-weight: 400;
+	position: relative;
+	opacity: 1;
+}
+
+h1 a {
+	text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+	color: #FFF;
+}
+
+h1 a:hover {
+	text-decoration: none;
+	color: #008080
+}
+
+h1:before,
+h1:after {
+	height: 2px;
+	width: 100%;
+	content: "";
+	background: #008080;
+	display: block;
+	position: absolute;
+}
+
+h1:before {
+	top: 0;
+	left: 0;
+}
+
+h1:after {
+	bottom: 0;
+	right: 0;
+}

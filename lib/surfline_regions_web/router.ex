@@ -16,22 +16,7 @@ defmodule SurflineRegionsWeb.Router do
   scope "/", SurflineRegionsWeb do
     pipe_through(:browser)
 
-    get("/", AreaController, :index)
-
-    resources "/areas", AreaController,
-      only: [:index, :show],
-      param: "surfline_id" do
-      resources "/regions", RegionController,
-        only: [:index, :show],
-        param: "surfline_id" do
-        resources(
-          "/subregions",
-          SubRegionController,
-          only: [:index, :show],
-          param: "surfline_id"
-        )
-      end
-    end
+    get("/", PageController, :index)
   end
 
   scope "/api", SurflineRegionsWeb, as: :api do
