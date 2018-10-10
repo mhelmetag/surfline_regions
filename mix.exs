@@ -4,7 +4,7 @@ defmodule SurflineRegions.Mixfile do
   def project do
     [
       app: :surfline_regions,
-      version: "0.0.4",
+      version: "0.0.5",
       elixir: "~> 1.4",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -51,7 +51,7 @@ defmodule SurflineRegions.Mixfile do
 
   defp aliases do
     [
-      setup: ["ecto.setup", "cd assets && npm install"],
+      setup: ["ecto.setup", "cmd 'cd assets && npm install'"],
       "ecto.setup": ["ecto.create", "ecto.migrate"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]
