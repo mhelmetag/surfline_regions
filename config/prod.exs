@@ -14,5 +14,5 @@ config :phoenix, :serve_endpoints, true
 
 config :surfline_regions, SurflineRegions.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env('DATABASE_URL', nil)
+  url: System.get_env('DATABASE_URL', nil),
   pool_size: 10
