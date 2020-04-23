@@ -11,3 +11,8 @@ config :logger, level: :info
 config :phoenix, :serve_endpoints, true
 
 # import_config "prod.secret.exs"
+
+config :surfline_regions, SurflineRegions.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env('DATABASE_URL', nil)
+  pool_size: 10
